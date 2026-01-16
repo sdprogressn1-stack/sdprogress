@@ -22,7 +22,6 @@
         #activity-modal::-webkit-scrollbar { width: 8px; }
         #activity-modal::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
-        /* ส่วนที่เพิ่ม: พื้นหลังจางๆ แบบคงที่ */
         .bg-fixed-background::before {
             content: "";
             position: fixed;
@@ -33,7 +32,7 @@
             background-image: url('https://i.ibb.co/B5tM18VV/IMG-0294.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.12; /* ปรับความจางตรงนี้ (0.1 คือจางมาก) */
+            opacity: 0.12; 
             z-index: -2;
             pointer-events: none;
         }
@@ -41,6 +40,23 @@
 </head>
 <body class="bg-slate-50 text-gray-800 bg-fixed-background">
 
+    <div id="welcome-popup" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="relative max-w-md w-full animate-[bounce_1s_ease-in-out]">
+            <button onclick="closeWelcomePopup()" class="absolute -top-3 -right-3 bg-white text-gray-800 hover:bg-red-500 hover:text-white rounded-full p-2 shadow-lg transition-all z-10 border-2 border-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <div class="bg-white p-2 rounded-2xl shadow-2xl">
+                <img src="https://i.ibb.co/gbXPhgPB/IMG-0696.jpg" class="w-full h-auto rounded-xl object-cover">
+                
+                <button onclick="closeWelcomePopup()" class="w-full mt-2 bg-gradient-sd text-white py-2 rounded-xl font-bold hover:opacity-90 transition">
+                    PROGRESS
+                </button>
+            </div>
+        </div>
+    </div>
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md py-3 px-5 flex justify-between items-center shadow-sm border-b border-blue-100">
         <div class="flex items-center gap-2">
             <button onclick="showPage('home')" class="flex items-center gap-2 hover:opacity-70 transition-all active:scale-95">
@@ -413,6 +429,16 @@
                 document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
+
+        // ============= ส่วนที่เพิ่ม: ฟังก์ชันปิด Popup =============
+        function closeWelcomePopup() {
+            const popup = document.getElementById('welcome-popup');
+            popup.style.opacity = '0'; // ทำให้ค่อยๆ จางหาย
+            setTimeout(() => {
+                popup.style.display = 'none'; // ซ่อนถาวรหลังจากจางหาย
+            }, 300);
+        }
+        // ======================================================
 
         // Gallery Data
         const activityData = {
