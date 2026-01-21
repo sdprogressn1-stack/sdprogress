@@ -6,6 +6,8 @@
     <title>SD PROGRESS - เบอร์ 1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
     <style>
         body { font-family: 'Kanit', sans-serif; scroll-behavior: smooth; }
         .bg-gradient-sd { background: linear-gradient(135deg, #38bdf8 0%, #f472b6 100%); }
@@ -19,16 +21,16 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .page-hidden { display: none; }
+        
+        /* Scrollbar */
         #activity-modal::-webkit-scrollbar { width: 8px; }
         #activity-modal::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
 
+        /* Background */
         .bg-fixed-background::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://i.ibb.co/B5tM18VV/IMG-0294.jpg');
             background-size: cover;
             background-position: center;
@@ -36,23 +38,68 @@
             z-index: -2;
             pointer-events: none;
         }
+
+        /* ============ ส่วนที่แก้ไข CSS ให้ภาพเต็ม ============ */
+        .swiper { width: 100%; height: auto; border-radius: 1rem; }
+        .swiper-slide { width: 100%; display: flex; align-items: center; justify-content: center; }
+        .swiper-slide img { 
+            width: 100%; 
+            height: auto;      /* แก้ไข: ให้ความสูงปรับอัตโนมัติตามสัดส่วนภาพ */
+            max-height: 70vh;  /* แก้ไข: จำกัดความสูงไม่ให้เกิน 70% ของหน้าจอ เพื่อไม่ให้ล้นเกินไป */
+            object-fit: contain; /* แก้ไข: ให้ภาพแสดงครบทั้งใบโดยไม่ตัดขอบ */
+            border-radius: 1rem;
+        }
+        /* =================================================== */
+
+        .swiper-button-next, .swiper-button-prev { 
+            color: #ec4899 !important; /* สีชมพู */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-weight: bold;
+        }
+        .swiper-pagination-bullet-active { background: #38bdf8 !important; }
     </style>
 </head>
 <body class="bg-slate-50 text-gray-800 bg-fixed-background">
 
     <div id="welcome-popup" class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300">
         <div class="relative max-w-md w-full animate-[bounce_1s_ease-in-out]">
-            <button onclick="closeWelcomePopup()" class="absolute -top-3 -right-3 bg-white text-gray-800 hover:bg-red-500 hover:text-white rounded-full p-2 shadow-lg transition-all z-10 border-2 border-gray-200">
+            <button onclick="closeWelcomePopup()" class="absolute -top-3 -right-3 bg-white text-gray-800 hover:bg-red-500 hover:text-white rounded-full p-2 shadow-lg transition-all z-[110] border-2 border-gray-200">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
             
             <div class="bg-white p-3 rounded-2xl shadow-2xl">
-                <img src="https://i.ibb.co/gbXPhgPB/IMG-0696.jpg" class="w-full h-auto rounded-xl object-cover">
+                <div class="swiper mySwiper mb-4">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="https://i.ibb.co/WvS9WQ5X/LINE-ALBUM-260121-10.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/b5X9SLVY/LINE-ALBUM-260121-11.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/bMtrQ1zs/LINE-ALBUM-260121-12.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/zV28x7jc/LINE-ALBUM-260121-13.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/s9X7Pt7S/LINE-ALBUM-260121-14.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/Y7Tmd8pP/LINE-ALBUM-260121-15.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/8ng1j3GM/LINE-ALBUM-260121-16.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/nMvhnjTh/LINE-ALBUM-260121-17.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/ZnKv9dW/LINE-ALBUM-260121-18.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/LdNgJrPR/LINE-ALBUM-260121-19.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/B2qm8pfL/LINE-ALBUM-260121-20.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/W49RwhTX/S-24535047.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/G3prHGRK/LINE-ALBUM-260121-1.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/whm10dVS/LINE-ALBUM-260121-3.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/8g4jRDNR/LINE-ALBUM-260121-4.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/dw5g1F7Y/LINE-ALBUM-260121-5.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/G4zhXXPT/LINE-ALBUM-260121-6.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/9HRVXtK6/LINE-ALBUM-260121-7.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/SwzLkbjC/LINE-ALBUM-260121-8.jpg"></div>
+                        <div class="swiper-slide"><img src="https://i.ibb.co/6cdZ1DT0/LINE-ALBUM-260121-9.jpg"></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
                 
                 <h3 class="text-2xl font-extrabold text-center my-4 text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-pink-500">
-                    ผู้ลงสมัครหมายเลข1
+                    ผู้ลงสมัครหมายเลข 1
                 </h3>
                 <button onclick="closeWelcomePopup()" class="w-full bg-gradient-sd text-white py-3 rounded-xl font-bold hover:opacity-90 transition text-lg shadow-md">
                     PROGRESS
@@ -60,6 +107,7 @@
             </div>
         </div>
     </div>
+
     <nav class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md py-3 px-5 flex justify-between items-center shadow-sm border-b border-blue-100">
         <div class="flex items-center gap-2">
             <button onclick="showPage('home')" class="flex items-center gap-2 hover:opacity-70 transition-all active:scale-95">
@@ -96,7 +144,7 @@
                 </div>
                 <h1 class="text-6xl font-black text-slate-800 mb-2 drop-shadow-sm">SD PROGRESS</h1>
                 <h2 class="text-xl font-bold text-pink-500 mb-6 bg-pink-100 px-4 py-1 rounded-full">ก้าวหน้า • พัฒนา • สร้างสรรค์</h2>
-                <p class="text-gray-600 mb-8 max-w-xs mx-auto italic">"เพราะโรงเรียนคือบ้านหลังที่สอง เราจึงต้องทำให้ดีที่สุด เพื่อทุกคน"</p>
+                <p class="text-gray-600 mb-8 max-w-xs mx-auto italic">"เราจะไม่สัญญา แต่จะทำให้ก้าวหน้าและพัฒนา ด้วยการกระทำ"</p>
                 
                 <div class="flex flex-col w-full gap-3 px-8">
                     <button onclick="showPage('gallery')" class="bg-pink-500 text-white py-3.5 rounded-2xl font-bold shadow-lg hover:bg-pink-600 transition-all active:scale-95 flex items-center justify-center gap-2">
@@ -121,7 +169,7 @@
                     <div class="bg-sky-50 p-6 rounded-3xl border border-sky-100 card-hover transition-all">
                         <div class="text-4xl mb-3">🎸🎶</div>
                         <h3 class="text-xl font-bold text-sky-700 mb-2">1. ดนตรีสร้างสุขกลางวัน</h3>
-                        <p class="text-gray-600 text-sm">มีการจัดกิจกรรมการแสดงดนตรีตอนเที่ยงของวันพฤหัสบดีเดือนละ 2 ครั้ง ✨</p>
+                        <p class="text-gray-600 text-sm">มีการจัดกิจกรรมการแสดงดนตรีตอนเที่ยงของวันพฤหัสบดีสุดท้ายของเดือน ✨</p>
                     </div>
                     <div class="bg-pink-50 p-6 rounded-3xl border border-pink-100 card-hover transition-all">
                         <div class="text-4xl mb-3">📮🗣️</div>
@@ -135,7 +183,7 @@
                     </div>
                     <div class="bg-pink-50 p-6 rounded-3xl border border-pink-100 card-hover transition-all">
                         <div class="text-4xl mb-3">🧹✨</div>
-                        <h3 class="text-xl font-bold text-pink-600 mb-2">4. โรงเรียนสะอาด ปลอดภัย น่าอยู่ 🧹✨</h3>
+                        <h3 class="text-xl font-bold text-pink-600 mb-2">4. โรงเรียนสะอาด ปลอดภัย น่าอยู่</h3>
                         <p class="text-gray-600 text-sm">รณรงค์ความสะอาด ความเป็นระเบียบ และความปลอดภัยในโรงเรียนอย่างเคร่งครัด ✅</p>
                     </div>
                     <div class="bg-purple-50 p-6 rounded-3xl border border-purple-100 card-hover transition-all">
@@ -161,168 +209,190 @@
                 </div>
             </div>
         </section>
-
         <section id="members" class="py-20 px-6 bg-slate-900 text-white relative">
             <div class="absolute top-0 left-0 w-full h-10 bg-white rounded-b-[3rem]"></div>
-            <div class="max-w-4xl mx-auto pt-8">
-                <h2 class="text-3xl font-black text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-pink-300">คณะกรรมการสภานักเรียน</h2>
+            <div class="max-w-6xl mx-auto pt-8"> <h2 class="text-3xl font-black text-center mb-10 text-transparent bg-clip-text bg-gradient-to-r from-sky-300 to-pink-300">คณะกรรมการสภานักเรียน</h2>
+                
                 <div class="flex flex-col md:flex-row justify-center gap-8 mb-12">
                     <div class="flex flex-col items-center bg-slate-800 p-6 rounded-3xl border border-slate-700 w-full md:w-64 transform hover:scale-105 transition-all">
                         <div class="w-32 h-32 bg-gray-600 rounded-full mb-4 border-4 border-pink-500 overflow-hidden shadow-lg shadow-pink-500/20">
-                            <img src="https://i.ibb.co/4nPBRG8n/IMG-0295.jpg" class="w-full h-full object-cover">
+                            <img src="https://i.ibb.co/Zz9Hvy2L/i.jpg" class="w-full h-full object-cover">
                         </div>
                         <div class="bg-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">ประธานนักเรียน</div>
-                        <h3 class="text-x font-bold">นางสาวณัฏฐ์ภรณ์ นวนงาม</h3>
+                        <h3 class="text-lg font-bold">นางสาวณัฏฐ์ภรณ์ นวนงาม</h3>
                     </div>
                     <div class="flex flex-col items-center bg-slate-800 p-6 rounded-3xl border border-slate-700 w-full md:w-64 transform hover:scale-105 transition-all">
                         <div class="w-32 h-32 bg-gray-600 rounded-full mb-4 border-4 border-sky-500 overflow-hidden shadow-lg shadow-sky-500/20">
-                            <img src="https://i.ibb.co/8LxBbD63/IMG-0303.jpg" class="w-full h-full object-cover">
+                            <img src="https://i.ibb.co/XkyQFGxq/mok.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">รองประธานฝ่ายหญิง</div>
-                        <h3 class="text-x font-bold">นางสาวทอฝัน อ่อนสุระทุม</h3>
+                        <div class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">รองประธานคนที่ 1</div>
+                        <h3 class="text-lg font-bold">นางสาวทอฝัน อ่อนสุระทุม</h3>
                     </div>
                     <div class="flex flex-col items-center bg-slate-800 p-6 rounded-3xl border border-slate-700 w-full md:w-64 transform hover:scale-105 transition-all">
                         <div class="w-32 h-32 bg-gray-600 rounded-full mb-4 border-4 border-sky-500 overflow-hidden shadow-lg shadow-sky-500/20">
-                            <img src="https://i.ibb.co/8447PX9q/IMG-0305.jpg" class="w-full h-full object-cover">
+                            <img src="https://i.ibb.co/5xJtjh9D/nc.jpg" class="w-full h-full object-cover">
                         </div>
-                        <div class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">รองประธานฝ่ายชาย</div>
-                        <h3 class="text-x font-bold">นายศุภชีพ บุญดี</h3>
+                        <div class="bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-2">รองประธานคนที่ 2</div>
+                        <h3 class="text-lg font-bold">นายศุภชีพ บุญดี</h3>
                     </div>
                 </div>
 
-                <h3 class="text-center text-gray-400 mb-6 font-bold tracking-widest text-sm uppercase">_______________</h3>
-                <div class="max-w-6xl mx-auto px-6 py-10 text-white">
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 text-center shadow-lg">
-            <h3 class="text-pink-400 font-bold mb-4 text-lg">เลขานุการ</h3>
-            <div class="w-24 h-24 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border-2 border-pink-500">
-                <img src="https://i.ibb.co/v6NVmgQj/IMG-0300.jpg" class="w-full h-full object-cover">
-            </div>
-            <p class="font-bold">นางสาวธวัลรัตน์ บุญถูก</p>
-        </div>
-        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 text-center shadow-lg">
-            <h3 class="text-pink-400 font-bold mb-4 text-lg">เหรัญญิก</h3>
-            <div class="w-24 h-24 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border-2 border-pink-500">
-                <img src="https://i.ibb.co/QvWB7Wr7/IMG-0298.jpg" class="w-full h-full object-cover">
-            </div>
-            <p class="font-bold">นางสาวอนันตญา อินทร์งาม</p>
-        </div>
-    </div>
+                <h3 class="text-center text-gray-400 mb-10 font-bold tracking-widest text-sm uppercase">            </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 text-center">
-            <h3 class="text-sky-400 font-bold mb-4 text-lg">ฝ่ายประชาสัมพันธ์</h3>
-            <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-sky-500">
-                <img src="https://i.ibb.co/pB9zrM3k/IMG-0297.jpg" class="w-full h-full object-cover">
-            </div>
-            <p class="text-sm">นางสาวชัชวาล จันทา</p>
-        </div>
-        <div class="bg-slate-800 p-6 rounded-3xl border border-slate-700 text-center">
-            <h3 class="text-sky-400 font-bold mb-4 text-lg">ฝ่ายส่งเสริมวิชาการ</h3>
-            <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-sky-500">
-                <img src="https://i.ibb.co/Fq83txfK/IMG-0296.jpg" class="w-full h-full object-cover">
-            </div>
-            <p class="text-sm">นายธนกร จิตรตะพล</p>
-        </div>
-    </div>
-
-    <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 mb-10">
-        <h3 class="text-sky-300 font-bold mb-8 text-center text-xl underline decoration-sky-500/30">ฝ่ายระเบียบวินัย</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/Z5VDRz9/IMG-0301.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">1. นายจุติพล ทองเจียว</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://via.placeholder.com/150" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">2. นางสาวธีจุฑา วงศ์ชารี</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/rGV2z112/IMG-0302.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">3. นายสรรวัชญ์ เกษาหอม</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 mb-10">
-        <h3 class="text-sky-300 font-bold mb-8 text-center text-xl">ฝ่ายกีฬาและนันทนาการ</h3>
-        <div class="flex flex-wrap justify-center gap-12">
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://via.placeholder.com/150" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">1. นางสาวสุภานันท์ ใจทน</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://via.placeholder.com/150" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">2. นายภูชิด แสงมูล</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700 mb-10">
-        <h3 class="text-sky-300 font-bold mb-8 text-center text-xl">ฝ่ายปฏิคมและสวัสดิการ</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/mFJgV7B0/IMG-0306.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">1. นางสาวบุษยมาศ กาหลง</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/39qZw5Z6/IMG-0304.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">2. นางสาวภัทราศิริ ไชยดำรงค์</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/PGfJr7B2/IMG-0307.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">3. นางสาวณัฐธิดาพร สมคะเน</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-slate-800/50 p-8 rounded-3xl border border-slate-700">
-        <h3 class="text-sky-300 font-bold mb-8 text-center text-xl">ฝ่ายอาคารสถานที่</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/hR4Jv2S1/IMG-0311.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">1. นายชัยวัฒน์ จันทปัญญา</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://i.ibb.co/TxYdHXvN/IMG-0299.jpg" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">2. นางสาวอรณิชา ราชดี</p>
-            </div>
-            <div class="text-center">
-                <div class="w-20 h-20 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-slate-500">
-                    <img src="https://via.placeholder.com/150" class="w-full h-full object-cover">
-                </div>
-                <p class="text-sm">3. นายศุภวัฒน์ ยอดลำ</p>
-            </div>
-        </div>
-    </div>
-
-</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 px-4 md:px-20">
+                    <div class="bg-slate-800/80 p-6 rounded-3xl border border-slate-700 flex items-center gap-4 hover:bg-slate-800 transition">
+                        <div class="w-20 h-20 flex-shrink-0 bg-gray-600 rounded-full overflow-hidden border-2 border-pink-400">
+                            <img src="https://i.ibb.co/S7RyWX9R/kem1.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <div class="text-pink-400 text-sm font-bold mb-1">เหรัญญิก</div>
+                            <h3 class="text-lg font-bold">นางสาวอนันตญา อินทร์งาม</h3>
+                        </div>
+                    </div>
+                    <div class="bg-slate-800/80 p-6 rounded-3xl border border-slate-700 flex items-center gap-4 hover:bg-slate-800 transition">
+                        <div class="w-20 h-20 flex-shrink-0 bg-gray-600 rounded-full overflow-hidden border-2 border-pink-400">
+                            <img src="https://i.ibb.co/NdHvt9Br/k2.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <div class="text-left">
+                            <div class="text-pink-400 text-sm font-bold mb-1">เลขานุการ</div>
+                            <h3 class="text-lg font-bold">นางสาวธวัลรัตน์ บุญถูก</h3>
+                        </div>
                     </div>
                 </div>
+
+                <h3 class="text-sky-300 font-bold mb-6 text-center text-xl underline decoration-sky-500/30">หัวหน้าฝ่ายและคณะทำงาน</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+                    
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/VYZmx5Mt/bong.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ประชาสัมพันธ์</p>
+                        <p class="text-sm">นายชัชวาล จันทา</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/YFycRjDq/mz.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ส่งเสริมกิจกรรมนักเรียน</p>
+                        <p class="text-sm">นายสรรวัชญ์ เกษาหอม</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/Fq83txfK/IMG-0296.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ส่งเสริมวิชาการ</p>
+                        <p class="text-sm">นายธนกร จิตรตะพล</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/JRYMV8YB/new.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ส่งเสริมระเบียบวินัย</p>
+                        <p class="text-sm">นายจุติพล ทองเจียว</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/tTTFKDHX/k3.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">อาคาร/สถานที่</p>
+                        <p class="text-sm">น.ส.อรณิชา ราชดี</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/VpCPm6Fd/p.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">กีฬา/นันทนาการ</p>
+                        <p class="text-sm">น.ส.สุภานันท์ ใจทน</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/QhTwQVD/f.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ปฏิคม/สวัสดิการ</p>
+                        <p class="text-sm">น.ส.บุษยมาศ กาหลง</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                             <img src="https://i.ibb.co/Rkt5ZsYW/rrang.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ส่งเสริมนักเรียนสัมพันธ์</p>
+                        <p class="text-sm">น.ส.ธีรจุฑา วงศ์ชารี</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/8gF5TS0M/d.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ส่งเสริมกิจกรรมสาธารณะ</p>
+                        <p class="text-sm">นายภูชิด แสงมูล</p>
+                    </div>
+
+                    <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 text-center hover:-translate-y-1 transition">
+                        <div class="w-16 h-16 mx-auto bg-gray-600 rounded-full mb-3 overflow-hidden border border-sky-500">
+                            <img src="https://i.ibb.co/939f3Qnv/kc.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-sky-400 text-xs font-bold mb-1">ศิลปวัฒนธรรม</p>
+                        <p class="text-sm">นายชัยวัฒน์ จันทปัญญา</p>
+                    </div>
+                </div>
+
+                <h3 class="text-gray-400 font-bold mb-6 text-center text-lg">ฝ่ายสนับสนุนการดำเนินงาน</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    
+                    <div class="text-center">
+                        <div class="w-14 h-14 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-slate-500">
+                            <img src="https://i.ibb.co/23kWJJ9p/bam.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-400">สนับสนุน</p>
+                        <p class="text-sm">น.ส.ภัทราศิริ ไชยดำรงค์</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-14 h-14 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-slate-500">
+                            <img src="https://i.ibb.co/ccQrjC2j/nui.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-400">สนับสนุน</p>
+                        <p class="text-sm">น.ส.ณัฐธิดาพร สมคะเน</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-14 h-14 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-slate-500">
+                            <img src="https://i.ibb.co/JjkkK0JG/mk.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-400">สนับสนุน</p>
+                        <p class="text-sm">นายศุภวัฒน์ ยอดลำ</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-14 h-14 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-slate-500">
+                            <img src="https://i.ibb.co/8n1dPDB3/nat.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-400">สนับสนุนกีฬา</p>
+                        <p class="text-sm">นายธราธาร ไหลหาโคตร</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-14 h-14 mx-auto bg-gray-600 rounded-full mb-2 overflow-hidden border border-slate-500">
+                             <img src="https://i.ibb.co/6RsFMjgt/at.jpg" class="w-full h-full object-cover">
+                        </div>
+                        <p class="text-xs text-gray-400">สนับสนุนกิจกรรมกีฬา</p>
+                        <p class="text-sm">นายรัชภาคย์ เสาเสมา</p>
+                    </div>
+
+                </div>
+
             </div>
         </section>
-    </div>
+
+</div>
 
     <div id="gallery-content" class="page-hidden pt-24 pb-20 px-6 min-h-screen bg-transparent">
         <div class="max-w-6xl mx-auto">
@@ -344,7 +414,7 @@
                         </div>
                     </div>
                     <div class="mt-4 text-center">
-                        <h3 class="text-xl font-bold text-gray-800">การจัดกิจกรรมโครงงานคัดดแยกขยะ</h3>
+                        <h3 class="text-xl font-bold text-gray-800">การจัดกิจกรรมโครงงานคัดแยกขยะ</h3>
                     </div>
                 </div>
 
@@ -359,6 +429,7 @@
                         <h3 class="text-xl font-bold text-gray-800">กิจกรรมภายในโรงเรียน</h3>
                     </div>
                 </div>
+                
                 <div onclick="openActivity('speek')" class="bg-white p-4 rounded-[2rem] shadow-xl card-hover cursor-pointer group">
                     <div class="rounded-3xl overflow-hidden aspect-[4/3] relative">
                         <img src="https://i.ibb.co/Hp2WBSmy/60678492-e5b3-4f18-906a-b1c313696795.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
@@ -367,18 +438,7 @@
                         </div>
                     </div>
                     <div class="mt-4 text-center">
-                        <h3 class="text-xl font-bold text-gray-800">กิจกรรมภายในห้องห้อง</h3>
-                    </div>
-                </div>
-                <div onclick="openActivity('know')" class="bg-white p-4 rounded-[2rem] shadow-xl card-hover cursor-pointer group">
-                    <div class="rounded-3xl overflow-hidden aspect-[4/3] relative">
-                        <img src="https://via.placeholder.com/150" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center">
-                            <span class="bg-white/90 text-gray-800 px-4 py-2 rounded-full font-bold opacity-0 group-hover:opacity-100 transition">คลิกดูรูปเพิ่มเติม</span>
-                        </div>
-                    </div>
-                    <div class="mt-4 text-center">
-                        <h3 class="text-xl font-bold text-gray-800">.</h3>
+                        <h3 class="text-xl font-bold text-gray-800">กิจกรรมภายในห้อง</h3>
                     </div>
                 </div>
             </div>
@@ -393,7 +453,7 @@
                     <button onclick="closeActivity()" class="text-gray-400 hover:text-red-500 text-5xl leading-none">&times;</button>
                 </div>
                 <div id="modal-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -403,7 +463,23 @@
         <p class="mt-1">โรงเรียนของเราน่าอยู่ เพราะพวกเราช่วยกัน</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Swiper Init (แก้ปัญหาเลื่อนไม่ได้ใน Popup)
+        var swiper = new Swiper(".mySwiper", {
+            loop: true,
+            observer: true,       // สำคัญ: ให้ Swiper ตรวจสอบการเปลี่ยนแปลง
+            observeParents: true, // สำคัญ: ให้ Swiper ตรวจสอบ Parent Element
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
         const menuBtn = document.getElementById('menuBtn');
         const closeBtn = document.getElementById('closeBtn');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -429,24 +505,23 @@
         function scrollToSection(id) {
             showPage('home');
             setTimeout(() => {
-                document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+                const el = document.getElementById(id);
+                if(el) el.scrollIntoView({ behavior: 'smooth' });
             }, 100);
         }
 
-        // ============= ส่วนที่เพิ่ม: ฟังก์ชันปิด Popup =============
         function closeWelcomePopup() {
             const popup = document.getElementById('welcome-popup');
-            popup.style.opacity = '0'; // ทำให้ค่อยๆ จางหาย
+            popup.style.opacity = '0';
             setTimeout(() => {
-                popup.style.display = 'none'; // ซ่อนถาวรหลังจากจางหาย
+                popup.style.display = 'none';
             }, 300);
         }
-        // ======================================================
 
         // Gallery Data
         const activityData = {
             'praying': {
-                title: 'การจัดกิจกรรมโครงงานคัดดแยกขยะ',
+                title: 'การจัดกิจกรรมโครงงานคัดแยกขยะ',
                 images: [
                     'https://i.ibb.co/FkCLnjsd/1921422f-6f82-4460-87a8-c9994ffe709d.jpg',
                     'https://i.ibb.co/v6CCF0vw/bcbcbc68-b23f-486e-ba12-166f35eaeaee.jpg',
@@ -457,7 +532,7 @@
                     'https://i.ibb.co/jZhMSPjg/141e02f930c4e687048493f96d0173ba.jpg',
                     'https://i.ibb.co/JWfdP4pR/d3e4a09bdae5c6b773d436b56c939db1.jpg',
                     'https://i.ibb.co/rffVCjZ2/2e568488b4cb6a3992709a6d557768e0.jpg',
-                    'https://i.ibb.co/TdvZSSz/8a7a4a067b08b0f7ba98979932db9a40.jpg',
+                    'https://i.ibb.co/TdvZSSz/8a7a4a067b08b0f7ba98979932db9a40.jpg'
                 ]
             },
             'meeting': {
@@ -472,12 +547,10 @@
                     'https://i.ibb.co/LhbpsN92/d6f2cc95f25544e60909a4417ea557cc.jpg',
                     'https://i.ibb.co/m5vh92K4/53a97c5e8ef15caac428df99b1798afb.jpg',
                     'https://i.ibb.co/MDKh4Xg5/eb962f2d9b791e1b15d625ca1890373d.jpg',
-                    'https://i.ibb.co/gLf6wX4H/7e3f16d4c2b0a61dc004929179709910.jpg',
-                    'https://i.ibb.co/V0qVYd8V/0d770bcc366147ca7a8c7771dfc9c358.jpg',
-                    'https://i.ibb.co/CpPHnXgx/bf98a3b84d8bcf6c042a583d9735e313.jpg',
+                    'https://i.ibb.co/gLf6wX4H/7e3f16d4c2b0a61dc004929179709910.jpg'
                 ]
             },
-             'speek': {
+            'speek': {
                 title: 'กิจกรรมภายในห้อง',
                 images: [
                     'https://i.ibb.co/Z6PCbd1t/17aa2459-506f-4bfd-8d40-37ed35ec6a8c.jpg',
@@ -489,16 +562,9 @@
                     'https://i.ibb.co/TxwFMT9X/cccb9ad98d24908eaf00a3582a991bc6.jpg',
                     'https://i.ibb.co/kVVJzTxp/c00a644f7201d2eb8f685d3d50a94e80.jpg',
                     'https://i.ibb.co/9mJxctG2/7ea8e2ab6ea4ad51dba79e8ceb297d48.jpg',
-                    'https://i.ibb.co/KcCmsDzw/7973d3aa393d3548398bd57fcb5fd468.jpg',
+                    'https://i.ibb.co/KcCmsDzw/7973d3aa393d3548398bd57fcb5fd468.jpg'
                 ]
-            },
-            'know': {
-                title: '.',
-                images: [
-                    'https://via.placeholder.com/150',
-                    'https://via.placeholder.com/150'
-                ]
-            },
+            }
         };
 
         function openActivity(id) {
@@ -506,12 +572,14 @@
             const grid = document.getElementById('modal-grid');
             document.getElementById('modal-title').innerText = data.title;
             grid.innerHTML = '';
-            data.images.forEach(img => {
-                grid.innerHTML += `
-                    <div class="rounded-2xl overflow-hidden shadow-md aspect-square">
-                        <img src="${img}" class="w-full h-full object-cover hover:scale-105 transition">
-                    </div>`;
-            });
+            if(data && data.images) {
+                data.images.forEach(img => {
+                    grid.innerHTML += `
+                        <div class="rounded-2xl overflow-hidden shadow-md aspect-square bg-gray-100">
+                            <img src="${img}" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-300">
+                        </div>`;
+                });
+            }
             document.getElementById('activity-modal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
         }
